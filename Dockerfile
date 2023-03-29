@@ -6,10 +6,10 @@ COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 
-COPY src/*.go ./
+COPY . .
 
-RUN go build -o main ./src/main.go
+RUN go build -o main ./main.go
 
 EXPOSE 8080
 
-CMD [ "/main" ]
+CMD [ "./main" ]
