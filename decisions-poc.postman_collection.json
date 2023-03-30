@@ -258,6 +258,100 @@
 					"body": "next node id: choice_c_pract_node"
 				}
 			]
+		},
+		{
+			"name": "localhost:8080/node/specialty_node",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/node/specialty_node",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"node",
+						"specialty_node"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "specialty node",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/node/specialty_node",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"node",
+								"specialty_node"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 30 Mar 2023 00:56:40 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "route: /specialties\nMethod: GET"
+				},
+				{
+					"name": "qnode",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/node/q_node",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"node",
+								"q_node"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 30 Mar 2023 00:58:23 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "29"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "route: /questions\nMethod: GET"
+				}
+			]
 		}
 	]
 }
