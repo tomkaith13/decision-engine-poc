@@ -19,7 +19,7 @@ Use this to clean up post-testing
 make docker-clean
 ```
 
-#### Sample decision tree
+### Sample decision tree
 ![alt text for screen readers](tree.png "sample tree used in main.go")
 
 The red arrows are Choice A
@@ -27,3 +27,39 @@ The red arrows are Choice A
 The blue is Choice B
 
 and green is Choice C
+
+### Endpoints
+#### POST /next
+ ```
+ curl --location 'localhost:8080/next' \
+--header 'Content-Type: application/json' \
+--data '{
+    "current_node": "specialty_node",
+    "input_kvp": {
+        "choice": "a"
+    }
+}'
+```
+
+which takes in 2 values:
+- current node id
+- key-value pair with whatever inputs we wanna share with the server
+
+the decision of which node to go to would be made using these 2 inputs
+
+Sample Response
+```
+next node id: services_node
+```
+
+#### GET /node/{id}
+This endpoint is used to fetch metadata about a specific node.
+Can be invoked using
+```
+curl --location 'localhost:8080/node/specialty_node'
+```
+ which returns the response:
+ ```
+route: /specialties
+Method: GET
+ ```
