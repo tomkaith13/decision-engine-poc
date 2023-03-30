@@ -63,3 +63,12 @@ curl --location 'localhost:8080/node/specialty_node'
 route: /specialties
 Method: GET
  ```
+
+ ### Debugging Issues
+ #### How to run locally without Docker
+ ```
+ make run
+ ```
+
+ #### How to ensure 8080 port is free
+See https://stackoverflow.com/a/36876427/224640
