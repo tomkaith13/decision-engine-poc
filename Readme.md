@@ -1,4 +1,4 @@
-## POC for make DAGs for decision trees
+## POC to make DAGs for decision routing
 This is a POC on how to create DAGs and use that to drive 
 routing decisions
 
