@@ -23,5 +23,7 @@ make docker-clean
 ![alt text for screen readers](tree.png "Text to show on mouseover")
 
 The red arrows are Choice A
+
 The blue is Choice B
+
 and green is Choice C
