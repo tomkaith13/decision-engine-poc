@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -75,16 +76,56 @@ func setupTenantConfig() Tree {
 
 }
 
+type NextRequest struct {
+	CurrentNodeId string `json:"current_node"`
+	CurrentInputs any    `json:"input_kvp"`
+}
+
 func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID)
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
-	setupTenantConfig()
+	tree := setupTenantConfig()
 
 	r.Post("/next", func(w http.ResponseWriter, r *http.Request) {
+		var bodyPayload NextRequest
+		err := json.NewDecoder(r.Body).Decode(&bodyPayload)
+
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte("Unable to decode body payload"))
+			return
+		}
+
+		// Insert routing logic here
+		node, ok := tree.NodeMap[bodyPayload.CurrentNodeId]
+		if !ok {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte("No such current node registered!!"))
+			return
+		}
+		nextNodeId := ""
+		if node.Id != "q_node" {
+			if node.Children != nil {
+				nextNodeId = node.Children[0].Id
+			} else {
+				nextNodeId = "nil"
+			}
+		} else {
+			// choice logic
+			choiceMap := bodyPayload.CurrentInputs.(map[string]any)
+			if choiceMap["choice"] == "a" {
+				nextNodeId = node.Children[0].Id
+			} else if choiceMap["choice"] == "b" {
+				nextNodeId = node.Children[1].Id
+			} else {
+				nextNodeId = node.Children[2].Id
+			}
+		}
+
 		w.WriteHeader(http.StatusCreated)
-		w.Write([]byte("hi"))
+		w.Write([]byte("next node id: " + nextNodeId))
 	})
 
 	http.ListenAndServe(":8080", r)
