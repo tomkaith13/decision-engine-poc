@@ -20,7 +20,7 @@ make docker-clean
 ```
 
 #### Sample decision tree
-![alt text for screen readers](tree.png "Text to show on mouseover")
+![alt text for screen readers](tree.png "sample tree used in main.go")
 
 The red arrows are Choice A
 
