@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -126,6 +127,19 @@ func main() {
 
 		w.WriteHeader(http.StatusCreated)
 		w.Write([]byte("next node id: " + nextNodeId))
+	})
+
+	r.Get("/node/{id}", func(w http.ResponseWriter, r *http.Request) {
+		id := chi.URLParam(r, "id")
+		node, ok := tree.NodeMap[id]
+		if !ok {
+			w.WriteHeader(http.StatusNotFound)
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(fmt.Sprintf("route: %s\nMethod: %s", node.ApiRoute, node.Method)))
+
 	})
 
 	http.ListenAndServe(":8080", r)
