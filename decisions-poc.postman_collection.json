@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "2f7b8bf4-da38-4fd3-aa71-8b10d94222b2",
+		"name": "decisions-poc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13380006"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/next",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"current_node\": \"services_node\",\n    \"input_kvp\": {\n        \"choice\": \"a\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/next",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"next"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "specialtyNode example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"current_node\": \"specialty_node\",\n    \"input_kvp\": {\n        \"choice\": \"a\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/next",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"next"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 29 Mar 2023 23:41:43 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "27"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "next node id: services_node"
+				},
+				{
+					"name": "service node example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"current_node\": \"services_node\",\n    \"input_kvp\": {\n        \"choice\": \"a\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/next",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"next"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 29 Mar 2023 23:42:20 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "20"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "next node id: q_node"
+				},
+				{
+					"name": "qnode choice a",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"current_node\": \"q_node\",\n    \"input_kvp\": {\n        \"choice\": \"a\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/next",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"next"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 29 Mar 2023 23:43:14 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "14"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "next node id: "
+				},
+				{
+					"name": "q node choice c",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"current_node\": \"q_node\",\n    \"input_kvp\": {\n        \"choice\": \"c\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/next",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"next"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 30 Mar 2023 00:00:19 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "next node id: choice_c_timeslot_node"
+				},
+				{
+					"name": "choice c timeslots",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"current_node\": \"choice_c_timeslot_node\",\n    \"input_kvp\": {\n        \"choice\": \"a\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/next",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"next"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 30 Mar 2023 00:01:34 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "next node id: choice_c_pract_node"
+				}
+			]
+		}
+	]
+}
