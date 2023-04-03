@@ -24,12 +24,7 @@ type Tree struct {
 
 func setupTenantConfig() Tree {
 	// config
-	// Choice A
-	// specialty -> services -> questionnaire -> location -> practitioner -> timeslots -> book
-	// Choice B
-	// 										  -> timeslots -> book
-	// Choice C
-	// 										  -> timeslots -> practitioner -> book
+	// See tree.png for the sample tree diagram
 
 	BookNode := Node{Children: nil, ApiRoute: "/appointment", Id: "book_node", Method: "POST"}
 
@@ -50,7 +45,7 @@ func setupTenantConfig() Tree {
 	ChoiceCTimeslotsChildren := []Node{ChoiceCPracitionerNode}
 	ChoiceCTimeslotsNode := Node{Children: ChoiceCTimeslotsChildren, ApiRoute: "/timeslots", Id: "choice_c_timeslot_node", Method: "GET"}
 
-	// from this point on, all children converge regardless of choice
+	// from this point on, all children converge regardless of choice and have the same parent
 	QuestionnaireChildren := []Node{ChoiceALocationNode, ChoiceATimeslotNode, ChoiceCTimeslotsNode}
 	QuestionnaireNode := Node{Children: QuestionnaireChildren, ApiRoute: "/questions", Method: "GET", Id: "q_node"}
 
@@ -115,7 +110,17 @@ func main() {
 			}
 		} else {
 			// choice logic
-			choiceMap := bodyPayload.CurrentInputs.(map[string]any)
+			choiceMap, ok := bodyPayload.CurrentInputs.(map[string]any)
+			if !ok {
+				w.WriteHeader(http.StatusBadRequest)
+				w.Write([]byte("Unable to map input_kvp to a map[string]any. Please check the POST bodys"))
+				return
+			}
+			if _, ok := choiceMap["choice"]; !ok {
+				w.WriteHeader(http.StatusBadRequest)
+				w.Write([]byte("No \'choice\' key in map"))
+				return
+			}
 			if choiceMap["choice"] == "a" {
 				nextNodeId = node.Children[0].Id
 			} else if choiceMap["choice"] == "b" {
