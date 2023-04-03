@@ -118,7 +118,7 @@ func main() {
 			}
 			if _, ok := choiceMap["choice"]; !ok {
 				w.WriteHeader(http.StatusBadRequest)
-				w.Write([]byte("No \'choice\' key in map"))
+				w.Write([]byte("No 'choice' key in map"))
 				return
 			}
 			if choiceMap["choice"] == "a" {
